@@ -50,6 +50,29 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
+        <div className="d-flex">
+          <Link
+            className="btn btn-primary btn-sm mx-2"
+            to="/login"
+            role="button"
+          >
+            Login
+          </Link>
+          <Link
+            className="btn btn-primary btn-sm mx-2"
+            to="/signup"
+            role="button"
+          >
+            Signup
+          </Link>
+          <Link
+            className="btn btn-primary btn-sm mx-2"
+            to="/logout"
+            role="button"
+          >
+            Logout
+          </Link>
+        </div>
       </nav>
     </div>
   );
