@@ -6,7 +6,7 @@ const fetchUser = require("../middleware/fetchUser");
 var jwt = require("jsonwebtoken");
 
 // JWT secret for signing the token
-const JWT_SECRET = "SathwikAdwitya143";
+const JWT_SECRET = "Sathwik143";
 
 var token = jwt.sign({ foo: "bar" }, JWT_SECRET);
 const { body, validationResult } = require("express-validator");

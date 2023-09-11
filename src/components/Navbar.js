@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   let location = useLocation();
   useEffect(() => {
     console.log(location.pathname);
   }, [location]);
+  const navigate = useNavigate();
+  const handleOnclick = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,27 +56,33 @@ export default function Navbar() {
           </div>
         </div>
         <div className="d-flex">
-          <Link
-            className="btn btn-primary btn-sm mx-2"
-            to="/login"
-            role="button"
-          >
-            Login
-          </Link>
-          <Link
-            className="btn btn-primary btn-sm mx-2"
-            to="/signup"
-            role="button"
-          >
-            Signup
-          </Link>
-          <Link
-            className="btn btn-primary btn-sm mx-2"
-            to="/logout"
-            role="button"
-          >
-            Logout
-          </Link>
+          {!localStorage.getItem("token") ? (
+            <>
+              <Link
+                className="btn btn-primary btn-sm mx-2"
+                to="/login"
+                role="button"
+              >
+                Login
+              </Link>
+              <Link
+                className="btn btn-primary btn-sm mx-2"
+                to="/signup"
+                role="button"
+              >
+                Signup
+              </Link>
+            </>
+          ) : (
+            <Link
+              className="btn btn-primary btn-sm mx-2"
+              to="/login"
+              role="button"
+              onClick={handleOnclick}
+            >
+              Logout
+            </Link>
+          )}
         </div>
       </nav>
     </div>
